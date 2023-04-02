@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1566454559 source:d:\jose2\cátedra\cátedraunt\2019-ii\valle\jlperalta_cgi\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+
+1368298160 d:\jose2\cátedra\cátedraunt\2019-ii\valle\jlperalta_cgi\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 d:\jose2\cátedra\cátedraunt\2019-ii\valle\jlperalta_cgi\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1680023804 source:c:\users\4dominic888\downloads\proyecto configurado\jlperalta_cgi\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+	<functional>
+	<vector>
+
+1368298160 c:\users\4dominic888\downloads\proyecto configurado\jlperalta_cgi\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 c:\users\4dominic888\downloads\proyecto configurado\jlperalta_cgi\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
