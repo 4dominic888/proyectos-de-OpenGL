@@ -5,6 +5,14 @@
 
 using namespace std;
 
+//TODO: IMPORTANTE:
+//! A la hora de ejecutar este codigo, el compilador necesitará de una configuración adicional
+//! Esto es debido a que se usan estructuras de datos nuevas de los includes colocados
+
+//* Codeblocks > Settings > Compiler...
+//* Select Compiler: GNU GCC Compiler
+//* Compiler settings > Compiler Flags > Have g++ follow the C++11 ISO C++ Language Standar [-std=c++11] (activar)
+
 class Poligono{
     public:
         array<float, 3> RGB; //Color del poligono
@@ -22,7 +30,7 @@ class Poligono{
 
                 //Y
                 _puntos[j][1] -= 400;
-                _puntos[j][1] *= -1; // El paint su eje y lo tiene invertido
+                _puntos[j][1] *= -1; // El paint, su eje y lo tiene invertido
                 _puntos[j][1] /= 400;
             }
 
