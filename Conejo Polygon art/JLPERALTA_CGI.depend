@@ -31,3 +31,20 @@
 	<GL/glu.h>
 	<stdlib.h>
 
+1680560365 source:c:\users\4dominic888\documents\cosas\proyectos generales\conejo polygon art opengl\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+	<functional>
+	<vector>
+
+1368298160 c:\users\4dominic888\documents\cosas\proyectos generales\conejo polygon art opengl\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 c:\users\4dominic888\documents\cosas\proyectos generales\conejo polygon art opengl\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
