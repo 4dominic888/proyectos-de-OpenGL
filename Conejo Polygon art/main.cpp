@@ -151,7 +151,7 @@ void creacionPoligonos(){
     figura.push_back(Poligono( {59,49,56} , {{605,308}, {594,309}, {603,296}} ));
     figura.push_back(Poligono( {59,49,56} , {{616,307}, {605,308}, {603,296}} ));
     figura.push_back(Poligono( {59,49,56} , {{616,307}, {612,295}, {603,296}} ));
-    figura.push_back(Poligono( {247,217,207} , {{616,307}, {612,295}, {625,293}} )); 
+    figura.push_back(Poligono( {247,217,207} , {{616,307}, {612,295}, {625,293}} ));
 
     // Cuerpo
     //                           Color RGB                Coordenadas

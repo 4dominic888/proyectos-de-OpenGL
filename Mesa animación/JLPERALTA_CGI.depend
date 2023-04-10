@@ -14,14 +14,103 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1680566363 source:c:\users\4dominic888\downloads\jlperalta_cgi\main.cpp
+1680023804 source:c:\users\4dominic888\downloads\proyecto configurado\jlperalta_cgi\main.cpp
 	<GL/glut.h>
-	<iostream>
+	<stdio.h>
+	<functional>
+	<vector>
 
-1368298160 c:\users\4dominic888\downloads\jlperalta_cgi\dependencias\include\gl\glut.h
+1368298160 c:\users\4dominic888\downloads\proyecto configurado\jlperalta_cgi\dependencias\include\gl\glut.h
 	"freeglut_std.h"
 
-1368298160 c:\users\4dominic888\downloads\jlperalta_cgi\dependencias\include\gl\freeglut_std.h
+1368298160 c:\users\4dominic888\downloads\proyecto configurado\jlperalta_cgi\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1680553624 source:c:\users\user\desktop\conejo-polygon-art-opengl-master\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+	<functional>
+	<vector>
+
+1680390188 c:\users\user\desktop\conejo-polygon-art-opengl-master\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1680390188 c:\users\user\desktop\conejo-polygon-art-opengl-master\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1681029191 source:c:\users\user\desktop\conejo-polygon-art-opengl-master andre\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+	<functional>
+	<vector>
+
+1680390188 c:\users\user\desktop\conejo-polygon-art-opengl-master andre\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1680390188 c:\users\user\desktop\conejo-polygon-art-opengl-master andre\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1681067287 source:c:\users\user\desktop\mesa y objeto - andré\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+	<functional>
+	<vector>
+
+1680390188 c:\users\user\desktop\mesa y objeto - andré\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1680390188 c:\users\user\desktop\mesa y objeto - andré\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1681108254 source:c:\users\4dominic888\downloads\mesa y objeto - andré\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+	<functional>
+	<vector>
+	<math.h>
+
+1680390188 c:\users\4dominic888\downloads\mesa y objeto - andré\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1680390188 c:\users\4dominic888\downloads\mesa y objeto - andré\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1681109677 source:c:\users\4dominic888\documents\cosas\proyectos generales\t1 computación grafica\mesa animación\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+	<functional>
+	<vector>
+	<math.h>
+
+1680390188 c:\users\4dominic888\documents\cosas\proyectos generales\t1 computación grafica\mesa animación\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1680390188 c:\users\4dominic888\documents\cosas\proyectos generales\t1 computación grafica\mesa animación\dependencias\include\gl\freeglut_std.h
 	<windows.h>
 	<OpenGL/gl.h>
 	<OpenGL/glu.h>
