@@ -29,7 +29,7 @@ void createPoligon(array<float,3> _RGB, vector<array<float,2>> _puntos){
     glBegin(GL_POLYGON);
         for(auto punto : _puntos){ glVertex2f(punto[0], punto[1]);} //Ingresa los vertices del poligono
     glEnd();
-    
+
 }
 //Esto era para el fondo pero ya no se usa porque ha sido reemplazada por fondoGradiente();
 void inicializar()
@@ -64,8 +64,8 @@ void redimensionar(int w, int h){
 //Crea los polígonos y los almacena en la variable figura
 void creacionPoligonos(){
     // Cabeza
-    //                           Color RGB                Coordenadas
-    //                         ------------    -----------------------------------
+    //               Color RGB                Coordenadas
+    //              ------------    -----------------------------------
     createPoligon( {168,130,111} , {{431,133}, {496,142}, {424,170}}    );
     createPoligon( {184,152,129} , {{496,142}, {483,147}, {506,166}}    );//
     createPoligon( {177,145,134} , {{424,170}, {439,225}, {462,207}}    );
@@ -214,7 +214,6 @@ void graficar()
     creacionPoligonos(); //Instacia los poligonos
     glFlush();
 }
-
 
 int main(int argc, char** argv)
 {
