@@ -30,3 +30,19 @@
 	<GL/glu.h>
 	<stdlib.h>
 
+1683428344 source:c:\users\4dominic888\documents\cosas\proyectos generales\trabajos computación gráfica\t2\ejercicio 1\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+	<iostream>
+
+1368298160 c:\users\4dominic888\documents\cosas\proyectos generales\trabajos computación gráfica\t2\ejercicio 1\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 c:\users\4dominic888\documents\cosas\proyectos generales\trabajos computación gráfica\t2\ejercicio 1\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+

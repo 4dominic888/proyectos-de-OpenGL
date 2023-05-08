@@ -4,9 +4,10 @@
 
 //Variables
 GLUquadric *p = gluNewQuadric();
-bool toggleEjes = true;
+bool toggleEjes = false;
 float spotX = 0;
 float spotY = 0;
+float spotZ = 0;
 
 //* Variables de animación
 //? change: [0] - Saludo | [1] - OK
@@ -16,10 +17,11 @@ float rotacionOK = 0;
 float dedoRotate[] = {0,0,0};
 
 GLfloat PosLuz[4] = {5.0, 5.0, 5.0, 1.0};
-GLfloat spotDirection[] = {-1.0 + spotX - PosLuz[0], -1.0 +spotY - PosLuz[1], -7.0, -1.0};
+GLfloat spotDirection[] = {-1.0 + spotX - PosLuz[0], -1.0 +spotY - PosLuz[1], -7.0, 0.0};
 
-GLfloat LuzAmbiente[4] = {0.5, 0.5, 0.5, 1.0};
-GLfloat LuzEspecular[4] = {0.6, 0.6, 0.6, 1.0};
+GLfloat LuzAmbiente[4] = {0.4, 0.4, 0.4, 1.0};
+GLfloat LuzEspecular[4] = {1, 1, 1, 1.0};
+GLfloat LuzDifusa[4] = {0.1, 0.1, 0.1, 1.0};
 GLfloat Material[4] = {0.5, 0.5, 0.5, 1.0};
 
 void inicializar()
@@ -63,17 +65,23 @@ void graficar()
 
 
     glEnable (GL_LIGHTING);
-    glMaterialfv (GL_FRONT, GL_SPECULAR, Material);
+    glMaterialfv (GL_FRONT, GL_SPECULAR, LuzEspecular);
+    glMaterialfv (GL_FRONT, GL_AMBIENT, LuzAmbiente);
+    glMaterialfv (GL_FRONT, GL_DIFFUSE, LuzDifusa);
+
     glLightfv(GL_LIGHT0, GL_AMBIENT, LuzAmbiente);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, LuzEspecular);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, LuzDifusa);
+
     glLightfv(GL_LIGHT0, GL_POSITION, PosLuz);
 
     glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, spotDirection);
 
-    glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 25); //angulo
+    glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 30 + spotZ); //angulo
     glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 0.2);
     glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 50.0);
-    glLightf(GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.5);
-    glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.2);
+    glLightf(GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.2);
+    glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.15);
     glEnable(GL_LIGHT0);
 
     glEnable(GL_COLOR_MATERIAL);
@@ -379,6 +387,14 @@ void special(int key, int x, int y){
   case GLUT_KEY_RIGHT:
     spotX+=0.1;
     break;
+
+  case GLUT_KEY_PAGE_UP:
+    spotZ+=0.3;
+    break;
+
+  case GLUT_KEY_PAGE_DOWN:
+    spotZ-=0.3;
+    break;
   
   default:
     break;
@@ -388,22 +404,24 @@ void special(int key, int x, int y){
 
 int main(int argc, char** argv)
 {
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(600,400);
-    glutInitWindowPosition(100,200);
-    glutCreateWindow("Mano Robótica");
 
-    inicializar();
+  printf("Con las flechas del teclado manejas la posición de la linterna (Spotlight)\n");
+  printf("Presiona 't' para activar o desactivar los ejes de coordenada\n");
+  printf("Con 'Re Pag' y 'Av Pag' controlas el ángulo de apertura de la linterna (Spotlight)\n");
+  
 
-    glutSpecialFunc(special);
-    glutDisplayFunc(graficar);
-    glutReshapeFunc(redimensionar);
-
-    glutTimerFunc(10,timer,1);
-    glutKeyboardFunc(teclas);
-
-    glutMainLoop();
-
-    return 0;
+  glutInit(&argc, argv);
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+  glutInitWindowSize(600,400);
+  glutInitWindowPosition(100,200);
+  glutCreateWindow("Mano Robótica");
+  inicializar();
+  glutSpecialFunc(special);
+  glEnable(GL_DEPTH);
+  glutDisplayFunc(graficar);
+  glutReshapeFunc(redimensionar);
+  glutTimerFunc(10,timer,1);
+  glutKeyboardFunc(teclas);
+  glutMainLoop();
+  return 0;
 }

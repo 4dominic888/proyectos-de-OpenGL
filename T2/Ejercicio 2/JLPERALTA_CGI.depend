@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1566454559 source:d:\jose2\cé†«edra\cé†«edraunt\2019-ii\valle\jlperalta_cgi\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+
+1368298160 d:\jose2\cé†«edra\cé†«edraunt\2019-ii\valle\jlperalta_cgi\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 d:\jose2\cé†«edra\cé†«edraunt\2019-ii\valle\jlperalta_cgi\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1683427113 source:c:\users\4dominic888\downloads\jlperalta_cgi\main.cpp
+	<GL/glut.h>
+	<stdlib.h>
+	<stdio.h>
+	<iostream>
+	<math.h>
+
+1368298160 c:\users\4dominic888\downloads\jlperalta_cgi\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 c:\users\4dominic888\downloads\jlperalta_cgi\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1683427719 source:c:\users\4dominic888\documents\cosas\proyectos generales\trabajos computación gráfica\t2\ejercicio 2\main.cpp
+	<GL/glut.h>
+	<stdlib.h>
+	<stdio.h>
+	<iostream>
+	<math.h>
+
+1368298160 c:\users\4dominic888\documents\cosas\proyectos generales\trabajos computación gráfica\t2\ejercicio 2\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 c:\users\4dominic888\documents\cosas\proyectos generales\trabajos computación gráfica\t2\ejercicio 2\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+

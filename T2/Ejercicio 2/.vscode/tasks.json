@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build-debug",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-g",
+          "main.cpp",
+          "-o",
+          "bin/Debug/JLPERALTA_CGI",
+          "-Ldependencias/lib",
+          "-lfreeglut",
+          "-lopengl32",
+          "-lglu32",
+          "-lwinmm",
+          "-lgdi32"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": "$gcc"
+      },
+      {
+        "label": "build-release",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-O2",
+          "main.cpp",
+          "-o",
+          "bin/Release/JLPERALTA_CGI",
+          "-Ldependencias/lib",
+          "-lfreeglut",
+          "-lopengl32",
+          "-lglu32",
+          "-lwinmm",
+          "-lgdi32"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": "$gcc"
+      }
+    ]
+  }
+  
