@@ -964,7 +964,7 @@ void graficar()
     glLightfv(GL_LIGHT2, GL_DIFFUSE, LuzDifusa);
     glLightfv(GL_LIGHT2, GL_AMBIENT, LuzAmbiente2);
 
-    glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 45); //angulo
+    glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 90); //angulo
     glLightf(GL_LIGHT2, GL_LINEAR_ATTENUATION, 0.05);
     glLightf(GL_LIGHT2, GL_SPOT_EXPONENT, 1);
     glLightf(GL_LIGHT2, GL_CONSTANT_ATTENUATION, 6.5);
