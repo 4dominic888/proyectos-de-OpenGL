@@ -1,0 +1,147 @@
+# depslib dependency file v1.0
+1589199904 source:f:\jlperalta_cgi\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+
+1368298160 f:\jlperalta_cgi\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 f:\jlperalta_cgi\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1570479330 source:e:\jlperalta_cgi\main.cpp
+	<gl/glut.h>
+
+1368298160 e:\jlperalta_cgi\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 e:\jlperalta_cgi\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1588609626 source:g:\jlperalta_cgi\main.cpp
+	<GL/glut.h>
+	<stdio.h>
+
+1368298160 g:\jlperalta_cgi\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 g:\jlperalta_cgi\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1591017940 source:f:\jlperalta_cgi_mod\main.cpp
+	"stdafx.h"
+	<stdlib.h>
+	<windows.h>
+	<GL/glut.h>
+	"glm.h"
+	"Texture.h"
+
+1206991862 f:\jlperalta_cgi_mod\stdafx.h
+	<stdio.h>
+	<tchar.h>
+
+1368298160 f:\jlperalta_cgi_mod\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368298160 f:\jlperalta_cgi_mod\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1354385916 f:\jlperalta_cgi_mod\glm.h
+	<GL/glut.h>
+
+1353162732 f:\jlperalta_cgi_mod\texture.h
+	<windows.h>
+	<windowsx.h>
+	<stdlib.h>
+	<stdio.h>
+	"GL/glut.h"
+	<math.h>
+
+1354385856 source:f:\jlperalta_cgi_mod\glm.cpp
+	"stdafx.h"
+	<math.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"glm.h"
+
+1206991862 source:f:\jlperalta_cgi_mod\stdafx.cpp
+	"stdafx.h"
+
+1208837404 source:f:\jlperalta_cgi_mod\texture.cpp
+	"stdafx.h"
+	"Texture.h"
+
+1354375056 source:c:\users\4dominic888\downloads\jlperalta_cgi_mod\glm.cpp
+	"stdafx.h"
+	<math.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"glm.h"
+
+1206984662 c:\users\4dominic888\downloads\jlperalta_cgi_mod\stdafx.h
+	<stdio.h>
+	<tchar.h>
+
+1354375116 c:\users\4dominic888\downloads\jlperalta_cgi_mod\glm.h
+	<GL/glut.h>
+
+1368290960 c:\users\4dominic888\downloads\jlperalta_cgi_mod\dependencias\include\gl\glut.h
+	"freeglut_std.h"
+
+1368290960 c:\users\4dominic888\downloads\jlperalta_cgi_mod\dependencias\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1206984662 source:c:\users\4dominic888\downloads\jlperalta_cgi_mod\stdafx.cpp
+	"stdafx.h"
+
+1208830204 source:c:\users\4dominic888\downloads\jlperalta_cgi_mod\texture.cpp
+	"stdafx.h"
+	"Texture.h"
+
+1353151932 c:\users\4dominic888\downloads\jlperalta_cgi_mod\texture.h
+	<windows.h>
+	<windowsx.h>
+	<stdlib.h>
+	<stdio.h>
+	"GL/glut.h"
+	<math.h>
+
+1684601910 source:c:\users\4dominic888\downloads\jlperalta_cgi_mod\main.cpp
+	"stdafx.h"
+	<stdlib.h>
+	<windows.h>
+	<GL/glut.h>
+	"glm.h"
+	"Texture.h"
+	<stdarg.h>
+	<vector>
+
