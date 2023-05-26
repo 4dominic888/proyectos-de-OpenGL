@@ -72,12 +72,12 @@ bool LoadTextures(int numArgs, ...){
 }
 
 void init(void)
-{	
+{
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glEnable(GL_DEPTH_TEST);
 	glShadeModel(GL_SMOOTH);
 	gluPerspective(45.0, (double)500 / (double)500, 0.1, 100.0);
-	LoadTextures(1, "modelos/felorcmale_Body.tga");
+	LoadTextures(2, "modelos/felorcmale_Body.tga", "modelos/gruagancho/skybox.tga");
 }
 
 void grilla(){
@@ -101,29 +101,29 @@ void grilla(){
 }
 
 void graficar(void)
-{	
+{
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
 	gluLookAt(cameraX, cameraY, cameraZ, cameraX + sin(cameraAngleX), cameraY + sin(cameraAngleY), cameraZ - cos(cameraAngleX), 0.0f, 1.0f, 0.0f);
 
-	
 
-	grilla();	
 
-	
+	grilla();
 
-	glRotatef(ypoz, 0, 1, 0);
+
+
+	//glRotatef(ypoz, 0, 1, 0);
 
 	glTranslatef(0,-1,0);
 
-	glBindTexture(GL_TEXTURE_2D, treeTextureAr[0].texID);
-	glmDraw(punteroM1, GLM_SMOOTH | GLM_TEXTURE);
+	//glBindTexture(GL_TEXTURE_2D, treeTextureAr[0].texID);
+	//glmDraw(punteroM1, GLM_SMOOTH | GLM_TEXTURE);
 
 
 	glTranslatef(1, 1, 1);
-	glBindTexture(GL_TEXTURE_2D, treeTextureAr[0].texID);
+	glBindTexture(GL_TEXTURE_2D, treeTextureAr[1].texID);
 	glmDraw(punteroM2, GLM_SMOOTH | GLM_TEXTURE);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -253,20 +253,20 @@ void mouse(int button, int state, int x, int y) {
     lastMouseX = x;
     lastMouseY = y;
 	buttonMouse = button;
-	
+
 }
 void motion(int x, int y) {
 	if (buttonMouse == GLUT_LEFT_BUTTON) {
     	int deltaX = x - lastMouseX;
     	int deltaY = y - lastMouseY;
     	cameraAngleX -= rotateSpeed * deltaX;
-    	cameraAngleY += rotateSpeed * deltaY;	
+    	cameraAngleY += rotateSpeed * deltaY;
 
-    	if (cameraAngleY > 1.2) {
-    	    cameraAngleY = 1.2;
-    	} 
-		else if (cameraAngleY < -1.2) cameraAngleY = -1.2;
-    	
+    	if (cameraAngleY > 1.8) {
+    	    cameraAngleY = 1.8;
+    	}
+		else if (cameraAngleY < -1.8) cameraAngleY = -1.8;
+
     	lastMouseX = x;
     	lastMouseY = y;
 	}
@@ -299,7 +299,7 @@ int main(int argc, char** argv)
 
 
 	punteroM1 = glmReadOBJ("modelos/felorcmale.obj");
-	punteroM2 = glmReadOBJ("modelos/piernaDerecha.obj");
+	punteroM2 = glmReadOBJ("modelos/gruagancho/skybox.obj");
 
 
 	glutReshapeFunc(redimensionar);
@@ -314,7 +314,7 @@ int main(int argc, char** argv)
 
 	glutMotionFunc(motion);
 	glutMouseFunc(mouse);
-	
+
 
 	glutTimerFunc(2, animate, 1);
 	glutMainLoop();
