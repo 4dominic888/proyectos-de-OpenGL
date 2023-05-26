@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <math.h>
 #include <iostream>
+#include <conio.h>
 
 #include <shaders/shaderClass.h>
 #include <shaders/VAO.h>
@@ -45,9 +46,15 @@ int main()
 	// Error check if the window fails to create
 	if (window == NULL)
 	{
-		std::cout << "Failed to create GLFW window" << std::endl;
-		glfwTerminate();
-		return -1;
+        // Obtener la descripción del error
+        const char* errorMessage;
+        glfwGetError(&errorMessage);
+        std::cout << "Failed to create GLFW window: " << errorMessage << std::endl;
+        glfwTerminate();
+
+        std::cout << "Press any key to exit...";
+        _getch(); // Esperar a que el usuario presione una tecla
+        return -1;
 	}
 	// Introduce the window into the current context
 	glfwMakeContextCurrent(window);
