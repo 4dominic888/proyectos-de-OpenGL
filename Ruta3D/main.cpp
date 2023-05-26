@@ -48,8 +48,10 @@ int main()
 	{
         // Obtener la descripción del error
         const char* errorMessage;
-        glfwGetError(&errorMessage);
-        std::cout << "Failed to create GLFW window: " << errorMessage << std::endl;
+        int num = glfwGetError(&errorMessage);
+        std::cout << "Ha ocurrido un error\n\nFailed to create GLFW window: "<< std::endl;
+		std::cout<<num<<std::endl;
+		std::cout <<errorMessage<< std::endl;
         glfwTerminate();
 
         std::cout << "Press any key to exit...";
