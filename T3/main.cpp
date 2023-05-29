@@ -11,6 +11,36 @@
 
 //?Variables
 
+//Variables interfaz
+int   obj_type = 1;
+int   light0_enabled = 1;
+int   light1_enabled = 0;
+float light0_intensity = 1.0;
+float light1_intensity = .4;
+float scale = 1.0;
+
+/** controles **/
+GLUI *glui;
+GLUI_Checkbox   *checkbox;
+GLUI_Spinner    *spinner, *light0_spinner, *light1_spinner;
+GLUI_RadioGroup *radio;
+GLUI_Panel      *obj_panel;
+
+/* IDs*/
+#define LIGHT0_ENABLED_ID    200
+#define LIGHT1_ENABLED_ID    201
+#define LIGHT0_INTENSITY_ID  250
+#define LIGHT1_INTENSITY_ID  251
+#define SHOW_ID              302
+#define HIDE_ID              303
+GLfloat light0_ambient[] =  {0.1f, 0.1f, 0.3f, 1.0f};
+GLfloat light0_diffuse[] =  {.6f, .6f, 1.0f, 1.0f};
+GLfloat light0_position[] = {.5f, .5f, 1.0f, 0.0f};
+
+GLfloat light1_ambient[] =  {0.1f, 0.1f, 0.3f, 1.0f};
+GLfloat light1_diffuse[] =  {.9f, .6f, 0.0f, 1.0f};
+GLfloat light1_position[] = {-1.0f, -1.0f, 1.0f, 0.0f};
+
 //* Variables de estado de la cámara
 float cameraX = -28.816996;
 float cameraY = 5.0f;
@@ -34,9 +64,6 @@ int lastMouseY = 0;
 int buttonMouse;
 
 //* Variables auxiliares
-float tempx;
-float tempy;
-float l = 0.05;
 float excavadora_animacion[5] = {0};
 int tick;
 
@@ -54,7 +81,6 @@ GLMmodel* excavadora8 = NULL;
 GLMmodel* excavadora9 = NULL;
 GLMmodel* excavadora10 = NULL;
 GLMmodel* excavadora11 = NULL;
-GLMmodel* terreno01 = NULL;
 GLMmodel* terreno02 = NULL;
 
 //*Variables camara
@@ -64,7 +90,7 @@ float vistaz;
 
 //* variables GUI
 int main_windows = 0;
-int active_grilla = 0;
+int activar_luces = 0;
 int velocidad_animacion = 1;
 int colorExcavadora = 0;
 bool parar_excavadora = false;
@@ -76,6 +102,50 @@ const char * boton_texto;
 GLuint	texture;
 std::vector<Texture> treeTextureAr;
 int avanzar = 1;
+
+void control_cb( int control )
+{
+  if ( control == LIGHT0_ENABLED_ID ) {
+    if ( light0_enabled ) {
+      glEnable( GL_LIGHT0 );
+      light0_spinner->enable();
+    }
+    else {
+      glDisable( GL_LIGHT0 );
+      light0_spinner->disable();
+    }
+  }
+  else if ( control == LIGHT1_ENABLED_ID ) {
+    if ( light1_enabled ) {
+      glEnable( GL_LIGHT1 );
+      light1_spinner->enable();
+    }
+    else {
+      glDisable( GL_LIGHT1 );
+      light1_spinner->disable();
+    }
+  }
+  else if ( control == LIGHT0_INTENSITY_ID ) {
+    float v[] = { light0_diffuse[0],  light0_diffuse[1],
+		  light0_diffuse[2],  light0_diffuse[3] };
+
+    v[0] *= light0_intensity;
+    v[1] *= light0_intensity;
+    v[2] *= light0_intensity;
+
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, v );
+  }
+  else if ( control == LIGHT1_INTENSITY_ID ) {
+    float v[] = { light1_diffuse[0],  light1_diffuse[1],
+		  light1_diffuse[2],  light1_diffuse[3] };
+
+    v[0] *= light1_intensity;
+    v[1] *= light1_intensity;
+    v[2] *= light1_intensity;
+
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, v );
+  }
+}
 
 void guiIdle(){
     if(glutGetWindow() != main_windows)
@@ -116,36 +186,15 @@ void init(void)
 	glEnable(GL_DEPTH_TEST);
 	glShadeModel(GL_SMOOTH);
 	gluPerspective(45.0, (double)500 / (double)500, 0.1, 100.0);
-	LoadTextures(8, "modelos/felorcmale_Body.tga",
+	LoadTextures(7, "modelos/felorcmale_Body.tga",
                     "modelos/skybox.tga",
                     "modelos/Excavadora_Texture_02.tga",
-                    "modelos/terreno/terreno_01.tga",
                     "modelos/terreno/terreno_02.tga",
 					"modelos/Excavadora_Texture_01 amarillo.tga",
 					"modelos/Excavadora_Texture_01 verde.tga",
 					"modelos/Excavadora_Texture_01 morado.tga"
     );
 
-}
-
-void grilla(){
-	glPushMatrix();
-	glTranslatef(-250.0f, 0.0f, -250.0f);
-
-	glColor3f(.4f, .4f, .4f);
-    glBegin(GL_LINES);
-    	for (int i = 0; i <= 500; i += 1) {
-    	    glVertex3f(0.0f, 0.0f, i);
-    	    glVertex3f(500.0f, 0.0f, i);
-    	}
-
-    	for (int i = 0; i <= 500; i += 1) {
-    	    glVertex3f(i, 0.0f, 0.0f);
-    	    glVertex3f(i, 0.0f, 500.0f);
-    	}
-	glEnd();
-	glPopMatrix();
-	glColor3f(1.0,1.0,1.0);
 }
 
 void animate(int i)
@@ -190,14 +239,13 @@ void graficado(GLMmodel * modelo, int texture){
 void graficar(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glMatrixMode(GL_PROJECTION);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
     vista =cameraX + sin(cameraAngleX);
     vistay= cameraY + sin(cameraAngleY);
     vistaz=cameraZ - cos(cameraAngleX);
 	gluLookAt(cameraX, cameraY, cameraZ, vista,vistay ,vistaz, 0.0f, 1.0f, 0.0f);
-
-	if(active_grilla) grilla();
 
 
 	//glRotatef(ypoz, 0, 1, 0);
@@ -212,20 +260,20 @@ void graficar(void)
 
 		glPushMatrix();
 			glTranslatef(-10 + excavadora_animacion[0], 0,0); //* <--
-			graficado(excavadora11, 5+colorExcavadora);
+			graficado(excavadora11, 4+colorExcavadora);
 
 			glPushMatrix();
 				glRotatef(excavadora_animacion[1], 0,1,0);//* <--
-				graficado(excavadora10, 5+colorExcavadora);
-				graficado(excavadora8, 5+colorExcavadora);
+				graficado(excavadora10, 4+colorExcavadora);
+				graficado(excavadora8, 4+colorExcavadora);
 				graficado(excavadora9, 2);
 
 				glPushMatrix();
 					glRotatef(excavadora_animacion[2], 0,0,1);//* <--
-					graficado(excavadora6, 5+colorExcavadora);
-					graficado(excavadora7, 5+colorExcavadora);
-					graficado(excavadora5, 5+colorExcavadora);
-					graficado(excavadora4, 5+colorExcavadora);
+					graficado(excavadora6, 4+colorExcavadora);
+					graficado(excavadora7, 4+colorExcavadora);
+					graficado(excavadora5, 4+colorExcavadora);
+					graficado(excavadora4, 4+colorExcavadora);
 					graficado(excavadora3_2, 2);
 
 					glPushMatrix();
@@ -234,7 +282,7 @@ void graficar(void)
 						glutSolidCube(0.05);
 						glTranslatef(-5.490030, -3.75999,0);
 						graficado(excavadora3_1, 2);
-						graficado(excavadora2, 5+colorExcavadora);
+						graficado(excavadora2, 4+colorExcavadora);
 
 						glPushMatrix();
 							glTranslatef(6.200006,1.15,0);
@@ -254,12 +302,14 @@ void graficar(void)
 
 	glPopMatrix();
 
-    //graficado(terreno01, 3); //? Vias de tren
-	graficado(terreno02, 4);
+	graficado(terreno02, 3);
 
 	glScalef(8,8,8);
 
 	graficado(skybox, 1);
+
+	if(activar_luces) glEnable(GL_LIGHTING);
+	else glDisable(GL_LIGHTING);
 
 	glutSwapBuffers();
 
@@ -273,6 +323,8 @@ void redimensionar(int w, int h)
 	glLoadIdentity();
 
 	gluPerspective(45.0, (GLfloat)w / (GLfloat)h, 1.0, 500.0);
+
+	glutPostRedisplay();
 
 }
 
@@ -301,19 +353,6 @@ void keyboard(unsigned char key, int x, int y) {
         case 27: // Tecla ESC para salir
             exit(0);
             break;
-
-		case 'j':
-			tempx-=l;
-			break;
-		case 'l':
-			tempx+=l;
-			break;
-		case 'i':
-			tempy+=l;
-			break;
-		case 'k':
-			tempy-=l;
-			break;
     }
 
 	//printf("x: %f | y: %f\n",tempx, tempy);
@@ -462,7 +501,6 @@ int main(int argc, char** argv)
 	excavadora9=glmReadOBJ("modelos/Excavadora_09.obj");
 	excavadora10=glmReadOBJ("modelos/Excavadora_10.obj");
 	excavadora11=glmReadOBJ("modelos/Excavadora_11.obj");
-	terreno01 = glmReadOBJ("modelos/terreno/terreno_01.obj");
 	terreno02 = glmReadOBJ("modelos/terreno/terreno_02.obj");
 
 
@@ -485,10 +523,21 @@ int main(int argc, char** argv)
 
 	glutTimerFunc(2, animate, 1);
 
-	GLUI *glui = GLUI_Master.create_glui("T3");
+    glEnable(GL_LIGHTING);
+    glEnable( GL_NORMALIZE );
 
-	new GLUI_Checkbox(glui, "Grilla", &active_grilla);
+    glEnable(GL_LIGHT0);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, light0_ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diffuse);
+    glLightfv(GL_LIGHT0, GL_POSITION, light0_position);
 
+    glLightfv(GL_LIGHT1, GL_AMBIENT, light1_ambient);
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, light1_diffuse);
+    glLightfv(GL_LIGHT1, GL_POSITION, light1_position);
+
+    glEnable(GL_DEPTH_TEST);
+
+    glui = GLUI_Master.create_glui("T3");
 	glui->set_main_gfx_window(glutGetWindow());
 
 	GLUI_Panel * panel = new GLUI_Panel(glui, "Velocidad de Animacion");
@@ -502,6 +551,45 @@ int main(int argc, char** argv)
 	listbox->add_item(2, "Morado");
 
 	boton = new GLUI_Button(glui, "Parar",1, buttonCallback);
+	new GLUI_Checkbox(glui, "Activar Luces generales", &activar_luces);
+	glui->add_separator();
+
+    GLUI_Rollout *roll_lights = new GLUI_Rollout(glui, "Luces", false );
+
+    GLUI_Panel *light0 = new GLUI_Panel( roll_lights, "Luz 1" );
+    GLUI_Panel *light1 = new GLUI_Panel( roll_lights, "Luz 2" );
+
+    new GLUI_Checkbox( light0, "Activar", &light0_enabled,
+                     LIGHT0_ENABLED_ID, control_cb );
+    light0_spinner =
+    new GLUI_Spinner( light0, "Intensidad:",&light0_intensity,
+                      LIGHT0_INTENSITY_ID,control_cb );
+    light0_spinner->set_float_limits( 0.0, 1.0 );
+    GLUI_Scrollbar *sb;
+    sb = new GLUI_Scrollbar( light0, "Rojo",GLUI_SCROLL_HORIZONTAL,
+                           &light0_diffuse[0],LIGHT0_INTENSITY_ID,control_cb);
+    sb->set_float_limits(0,1);
+    sb = new GLUI_Scrollbar( light0, "Verde",GLUI_SCROLL_HORIZONTAL,
+                           &light0_diffuse[1],LIGHT0_INTENSITY_ID,control_cb);
+    sb->set_float_limits(0,1);
+    sb = new GLUI_Scrollbar( light0, "Azul",GLUI_SCROLL_HORIZONTAL,
+                           &light0_diffuse[2],LIGHT0_INTENSITY_ID,control_cb);
+    sb->set_float_limits(0,1);
+    new GLUI_Checkbox( light1, "Activar", &light1_enabled,
+                     LIGHT1_ENABLED_ID, control_cb );
+    light1_spinner = new GLUI_Spinner( light1, "Intensidad:",
+                      &light1_intensity, LIGHT1_INTENSITY_ID,
+                      control_cb );
+    light1_spinner->set_float_limits( 0.0, 1.0 );
+    sb = new GLUI_Scrollbar( light1, "Rojo",GLUI_SCROLL_HORIZONTAL,
+                           &light1_diffuse[0],LIGHT1_INTENSITY_ID,control_cb);
+    sb->set_float_limits(0,1);
+    sb = new GLUI_Scrollbar( light1, "Verde",GLUI_SCROLL_HORIZONTAL,
+                           &light1_diffuse[1],LIGHT1_INTENSITY_ID,control_cb);
+    sb->set_float_limits(0,1);
+    sb = new GLUI_Scrollbar( light1, "Azul",GLUI_SCROLL_HORIZONTAL,
+                           &light1_diffuse[2],LIGHT1_INTENSITY_ID,control_cb);
+    sb->set_float_limits(0,1);
 
 	glui->set_main_gfx_window(glutGetWindow());
 	glui->set_main_gfx_window(main_windows);
