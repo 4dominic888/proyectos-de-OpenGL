@@ -8,6 +8,7 @@
 #include <vector>
 #include <windows.h>
 #include <GL/glui.h>
+#include <GL/freeglut.h>
 
 //?Variables
 
@@ -247,7 +248,7 @@ void graficar(void)
     vistaz=cameraZ - cos(cameraAngleX);
 	gluLookAt(cameraX, cameraY, cameraZ, vista,vistay ,vistaz, 0.0f, 1.0f, 0.0f);
 
-
+    glScalef(scale,scale,scale);
 	//glRotatef(ypoz, 0, 1, 0);
 
 	glTranslatef(0,-4,0);
@@ -444,6 +445,16 @@ void mouse(int button, int state, int x, int y) {
 	buttonMouse = button;
 
 }
+void mouseWheel(int wheel, int direction, int x, int y) {
+    if (direction > 0) {
+        // Rueda del mouse hacia arriba, incrementar el valor
+        scale+=000.1;
+    } else {
+        // Rueda del mouse hacia abajo, decrementar el valor
+        scale-=000.1;
+    }
+    glutPostRedisplay();
+}
 void motion(int x, int y) {
 	if (buttonMouse == GLUT_LEFT_BUTTON) {
     	int deltaX = x - lastMouseX;
@@ -517,9 +528,9 @@ int main(int argc, char** argv)
 	glutSpecialUpFunc(specialKeyBoardUp);
 	glutTimerFunc(0, updateMovement, 0);
 
+    glutMouseWheelFunc(mouseWheel);
 	glutMotionFunc(motion);
 	glutMouseFunc(mouse);
-
 
 	glutTimerFunc(2, animate, 1);
 
