@@ -4,7 +4,7 @@ import shutil
 
 file_name = "Ruta3D"
 
-cpp_dir = "dependencias/include/shaders"
+cpp_dir = "dependencias/include/extra"
 
 include_dir = "dependencias/include"
 lib_dir = "dependencias/lib"
